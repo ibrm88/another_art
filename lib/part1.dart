@@ -14,6 +14,8 @@ double width = 16 ;
 
 class _Part1State extends State<Part1> {
 
+  PageController pageController = PageController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,18 +51,62 @@ class _Part1State extends State<Part1> {
                 title: Text("الرئيسية"),
               ),
             ),
+            // InkWell(
+            //   onTap: (){
+            //
+            //   },
+            //   child: ListTile(
+            //     leading: Icon(
+            //       Icons.menu_book,
+            //
+            //     ),
+            //     title: Text("الفهرس"),
+            //   ),
+            // ),
+
             InkWell(
               onTap: (){
-
-              },
+                pageController.jumpToPage(0);
+                Navigator.pop(context);
+                },
               child: ListTile(
-                leading: Icon(
-                  Icons.menu_book,
-
-                ),
-                title: Text("الفهرس"),
+                title: Text('First page'),
               ),
             ),
+            InkWell(
+              onTap: (){
+                pageController.jumpToPage(1);
+                Navigator.pop(context);
+                },
+              child: ListTile(
+                title: Text('Second page'),
+              ),
+            ),
+            InkWell(
+              onTap: (){
+                pageController.jumpToPage(2);
+                Navigator.pop(context);
+                },
+              child: ListTile(
+                title: Text('Third page'),
+              ),
+            ),
+            InkWell(
+              onTap: (){
+                pageController.jumpToPage(3);
+                Navigator.pop(context);
+                },
+              child:ListTile(
+                title: Text('Forth page'),
+              ),
+            ),
+
+
+
+
+
+
+
             InkWell(
               onTap: (){
 
@@ -292,60 +338,12 @@ class _Part1State extends State<Part1> {
 
 
                 children: [
-
-                  ListView.builder(
-
-                    scrollDirection: Axis.vertical,
-                    itemCount: part1.length,
-
-                    itemBuilder: (context, index)
-                    {
-                      return Column(
-
-                        children: [
-
-                          Padding(
-                            padding: EdgeInsets.all(10),
-                            child: ListTile(
-
-
-                              title: Text('${part1[0]['title']}',
-                                style: TextStyle(
-                                  color: (clr != false)?  Colors.white :Colors.black,
-                                ),
-                              ),
-                              subtitle: Text('${part1[0]['thetext']}',
-                                style: TextStyle(
-                                  color: (clr != false)?  Colors.white :Colors.black,
-                                  fontSize: width,
-                                  height: 2,
-
-                                ),
-                                textAlign: TextAlign.justify,
-                              ),
-
-
-
-
-
-
-                            ),
-
-                          ),
-                          Text( index.toString(),),
-
-
-
-
-                        ],
-
-                      );
-                    },
-                  ),
-
-
-
-
+                  PageView.builder(
+                    itemCount: allStory.length,
+                      controller: pageController,
+                      itemBuilder: (c,i){
+                    return Text(allStory[i]);
+                  })
                 ],
 
               ),
@@ -360,3 +358,55 @@ class _Part1State extends State<Part1> {
     );
   }
 }
+
+//
+// ListView.builder(
+//
+// scrollDirection: Axis.vertical,
+// itemCount: part1.length,
+//
+// itemBuilder: (context, index)
+// {
+// return Column(
+//
+// children: [
+//
+// Padding(
+// padding: EdgeInsets.all(10),
+// child: ListTile(
+//
+//
+// title: Text('${part1[0]['title']}',
+// style: TextStyle(
+// color: (clr != false)?  Colors.white :Colors.black,
+// ),
+// ),
+// subtitle: Text('${part1[0]['thetext']}',
+// style: TextStyle(
+// color: (clr != false)?  Colors.white :Colors.black,
+// fontSize: width,
+// height: 2,
+//
+// ),
+// textAlign: TextAlign.justify,
+// ),
+//
+//
+//
+//
+//
+//
+// ),
+//
+// ),
+// Text( index.toString(),),
+//
+//
+//
+//
+// ],
+//
+// );
+// },
+// ),
+//

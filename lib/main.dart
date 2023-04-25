@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:untitled1/part1.dart';
 import 'Home.dart';
 import 'locator.dart' as di;
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.blue,
       ),
-      home:   HomePage() );
+      home:   Part1() );
   }
 }
 
